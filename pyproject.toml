@@ -1,0 +1,27 @@
+[project]
+    name = "jat-finetune"
+    version = "0.0"
+    description = "finetune jack of all trades"
+    authors = [{ name = "graham", email = "graham.annett@gmail.com" }]
+    dependencies = [
+        "transformers[torch]>=4.40.2",
+        "datasets>=2.19.1",
+        "torchvision>=0.18.0",
+        "gymnasium>=0.29.1",
+    ]
+    requires-python = ">=3.12"
+    readme = "README.md"
+    license = { text = "none" }
+
+    [project.scripts]
+        gamegame = "jat_finetune.cli:main"
+
+[build-system]
+    requires = ["pdm-backend"]
+    build-backend = "pdm.backend"
+
+[tool.pdm]
+    distribution = true
+
+[tool.ruff]
+    line-length = 120
