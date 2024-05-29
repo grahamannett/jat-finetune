@@ -1,12 +1,20 @@
-from datasets import get_dataset_config_names
+import warnings
+
+import datasets
 
 
 def get_jat_config_names() -> list[str]:
     """Get the list of available JAT dataset config names.
-
     WARNING: this is insanely slow.  might be wise to cache this (or just copy the strs) to a file
     """
-    return get_dataset_config_names("jat-project/jat-dataset")
+    warnings.simplefilter("always", ResourceWarning)
+    warnings.warn(
+        "this is insanely slow, prefer to use `JAT_DATASET_CONFIG_NAMES` instead.",
+        category=ResourceWarning,
+        stacklevel=1,
+    )
+    warnings.simplefilter("default", ResourceWarning)
+    return datasets.get_dataset_config_names("jat-project/jat-dataset")
 
 
 JAT_DATASET_CONFIG_NAMES = [
